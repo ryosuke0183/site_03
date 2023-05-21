@@ -1,0 +1,10 @@
+@use '../config/config' as config;
+
+// use mediaquery min-width
+@mixin mediaMin($breakpoint) {
+    $dimensions: map-get($map: config.$breakpoints, $key: $breakpoint);
+
+    @media screen and (min-width: $dimensions) {
+        @content;
+    }
+}

@@ -1,0 +1,216 @@
+@use '../forwards' as *;
+
+.main {
+    position: relative;
+    overflow: hidden;
+
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+
+        @include mediaMin(drawer) {
+            display: grid;
+            grid-template-columns: repeat(20, minmax(20px, 1fr));
+            grid-template-rows: repeat(17, minmax(0, 1fr));
+            width: unset;
+            height: 100vh;
+        }
+    }
+}
+
+.bg-title {
+    display: none;
+
+    @include mediaMin(drawer) {
+        display: block;
+        color: rgb(206, 206, 206);
+        font-size: rem(100px);
+        @include font(accent, regular);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+    }
+}
+
+.sp-bg-title {
+    font-size: rem(24px);
+    @include font(main, bold);
+    writing-mode: vertical-lr;
+    position: fixed;
+    top: 100px;
+    right: 20px;
+
+    @include mediaMin(drawer) {
+        display: none;
+    }
+}
+
+.screen {
+    display: none;
+
+    @include mediaMin(drawer) {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        opacity: 0;
+        position: absolute;
+        z-index: 0;
+    }
+
+    &__bg {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        filter: blur(3px);
+        transform-origin: center;
+
+        &:before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            background-color: rgba(black, 0.2);
+            position: absolute;
+            z-index: -1;
+        }
+    }
+
+    &__text {
+        color: white;
+        @include font(base, black);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+
+        @include mediaMin(drawer) {
+            font-size: rem(100px);
+        }
+    }
+}
+
+.item {
+    margin-bottom: 120px;
+
+    @include mediaMin(drawer) {
+        margin-bottom: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &__figure {
+        @include mediaMin(drawer) {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__fig {
+        display: none;
+
+        @include mediaMin(drawer) {
+            display: block;
+        }
+    }
+
+    &__img {
+        width: 100%;
+
+        @include mediaMin(drawer) {
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+@keyframes appear1 {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes appear2 {
+    0% {
+        clip-path: inset(49.5% 0);
+    }
+
+    100% {
+        clip-path: inset(0 0);
+    }
+}
+
+$initDelay1: 0.2;
+$initDelay2: 0.1;
+$initDelay3: 0.05;
+
+@for $i from 1 through 7 {
+    $delay1: $initDelay1 * $i;
+    $delay2: $initDelay2 * $i;
+    $delay3: $initDelay3 * $i;
+
+    .item#{$i} {
+        opacity: 0;
+
+        @include mediaMin(drawer) {
+            clip-path: inset(49.5% 0);
+            animation: appear1 1s ease #{$delay1}s forwards;
+        }
+    }
+
+    .item#{$i}.anime1 {
+        opacity: 1;
+        animation: appear2 0.5s ease #{$delay2}s forwards;
+    }
+
+    .item#{$i}.js-intersect {
+        animation: appear1 1s ease #{$delay3}s forwards;
+    }
+}
+
+.item1 {
+    grid-column: 18/21;
+    grid-row: 3/7;
+}
+
+.item2 {
+    grid-column: 9/13;
+    grid-row: 14/17;
+}
+
+.item3 {
+    grid-column: 1/4;
+    grid-row: 4/8;
+}
+
+.item4 {
+    grid-column: 11/16;
+    grid-row: 1/5;
+}
+
+.item5 {
+    grid-column: 2/7;
+    grid-row: 12/16;
+}
+
+.item6 {
+    grid-column: 6/9;
+    grid-row: 1/7;
+}
+
+.item7 {
+    grid-column: 15/21;
+    grid-row: 13/18;
+}

@@ -1,0 +1,16 @@
+@use '../forwards' as *;
+
+.btn {
+    display: inline-block;
+    min-width: 110px;
+    text-align: center;
+    border-radius: 100vh;
+    @include font(main, medium);
+    line-height: 1;
+
+    &--grey {
+        padding: 10px 15px;
+        color: white;
+        background-color: #9b9b9b;
+    }
+}

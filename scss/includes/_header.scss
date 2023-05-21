@@ -1,0 +1,65 @@
+@use '../forwards' as *;
+
+.header {
+    &__inner {
+        width: 100%;
+        padding: 20px 20px;
+        text-align: center;
+        background-color: rgb(249, 249, 249);
+        position: fixed;
+        z-index: 1000;
+
+        @include mediaMin(drawer) {
+            display: flex;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: transparent;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+        }
+    }
+
+    &__logo {
+
+        @include mediaMin(drawer) {
+            margin-right: 20px;
+            position: static;
+            transform: unset;
+        }
+    }
+
+    &__nav {
+        @include mediaMin(drawer) {
+            margin-right: 20px;
+            margin-left: auto;
+        }
+    }
+
+    &__contact {
+        display: none;
+
+        @include mediaMin(drawer) {
+            display: inline-block;
+            margin-left: unset;
+        }
+    }
+}
+
+.logo {
+    font-size: rem(26px);
+    @include font(accent, regular);
+    line-height: 1;
+
+    @include mediaMin(md) {
+        font-size: rem(30px);
+    }
+
+    @include mediaMin(drawer) {
+        font-size: rem(38px);
+    }
+
+    @include mediaMin(xl) {
+        font-size: rem(50px);
+    }
+}

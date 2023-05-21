@@ -1,0 +1,13 @@
+@use '../forwards' as *;
+
+body {
+    @include font(base, regular);
+
+    * {
+        letter-spacing: 0em;
+    }
+}
+
+img {
+    max-width: 100%;
+}

@@ -1,0 +1,33 @@
+$breakpoints :(xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+    drawer: 768px,
+);
+
+// color
+$cText: #222222;
+$cBase: white;
+$cMain: #a41818;
+$cAccent: blue;
+$cBorder1: #dedede;
+$cBg1: #fcf9e7;
+
+// fonts
+$fontFamilies: (
+    base: #{'Noto Sans JP', sans-serif},
+    main: #{'Roboto', sans-serif},
+    accent: #{'Monoton', cursive},
+);
+
+// weights
+$weights: (
+    thin: 100,
+    light: 300,
+    regular: 400,
+    medium: 500,
+    bold: 700,
+    black: 900
+);

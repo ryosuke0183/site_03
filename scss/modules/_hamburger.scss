@@ -1,0 +1,20 @@
+@use '../forwards' as *;
+
+.hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    background-color: #cccccc;
+    position: fixed;
+    top: 24px;
+    right: 20px;
+    z-index: 2000;
+
+    @include mediaMin(drawer) {
+        display: none;
+    }
+}

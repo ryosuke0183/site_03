@@ -1,0 +1,15 @@
+@use '../config/config' as config;
+
+// select font-family and weights
+@mixin font($fontFamily, $weight) {
+    $typeface: map-get($map: config.$fontFamilies, $key: $fontFamily);
+    $thickness: map-get($map: config.$weights, $key: $weight);
+
+    font-family: $typeface;
+    font-weight: $thickness;
+}
+
+@mixin fontAwesome($unicode) {
+    font: var(--fa-font-solid);
+    content: $unicode;
+}

@@ -1,0 +1,20 @@
+@use 'sass:math' as math;
+
+@function spritUnit($number) {
+    @if type-of($number)=='number' and not unitless($number) {
+        @return math.div($number, ($number * 0 + 1));
+    }
+
+    @return $number;
+}
+
+@function rem($px, $base: 16px) {
+    @if(unit($px) !='px') {
+        @warn '';
+        @return $px;
+    }
+
+    $value: math.div(spritUnit($px), spritUnit($base)) * 1rem;
+
+    @return $value;
+}
